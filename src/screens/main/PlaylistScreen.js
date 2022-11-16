@@ -1,12 +1,12 @@
 import {Button, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+// import {useSelector, useDispatch} from 'react-redux';
 import PlaylistData from '../../../assets/dummydata/PlaylistData';
 import {unlikeAll, likeAll} from '../../redux/features/like/likeSlice';
 // import likeContainer from '../../components/PlaylistScreenComponents/likeContainer'
 
 const PlaylistScreen = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const {likedSongs, isLoading, amount} = useSelector(store => store.like);
   if (amount < 1) {
     return (
@@ -51,8 +51,13 @@ const PlaylistScreen = () => {
             );
           })}
         </Text>
-        <Button title="unlike all" onPress={() => dispatch(unlikeAll())} />
-        <Button title="like all" onPress={() => dispatch(likeAll())} />
+        <Button 
+        title="unlike all" 
+        // onPress={() => dispatch(unlikeAll())} 
+        />
+        <Button title="like all" 
+        // onPress={() => dispatch(likeAll())} 
+        />
       </View>
     );
   }

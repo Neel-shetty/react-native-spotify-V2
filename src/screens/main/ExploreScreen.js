@@ -1,13 +1,13 @@
 import {
   Image,
   StyleSheet,
-  Text
+  Text,
   View,
   Dimensions,
   FlatList,
 } from 'react-native';
 import React, {useEffect, useLayoutEffect, useState} from 'react';
-import * as MediaLibrary from 'expo-media-library';
+// import * as MediaLibrary from 'expo-media-library';
 import Button from '../../components/ui/Button';
 // import * as FileSystem from 'expo-file-system';
 import DefaultHeader from '../../components/MusicPlayerComponents/DefaultHeader';
@@ -15,7 +15,7 @@ import {FlashList} from '@shopify/flash-list';
 import PlaylistItem from '../../components/HomeScreenComponents/Playlist/PlaylistItem';
 import PlaylistData from '../../../assets/dummydata/PlaylistData';
 import PlaylistScreenItem from '../../components/PlaylistScreenComponents/PlaylistScreenItem';
-import * as SQLite from 'expo-sqlite';
+// import * as SQLite from 'expo-sqlite';
 import apiClient from '../../service/http';
 import {useQuery} from 'react-query';
 

@@ -20,7 +20,7 @@ import Playlist from '../../components/HomeScreenComponents/Playlist/Playlist';
 import Header from '../../components/HomeScreenComponents/Header/Header';
 import SearchIcon from '../../components/ui/SearchIcon';
 import MenuDots from '../../components/ui/MenuDots';
-import * as MediaLibrary from 'expo-media-library';
+// import * as MediaLibrary from 'expo-media-library';
 // import {StatusBar} from 'expo-status-bar';
 // import {API_KEY} from '@env'
 
