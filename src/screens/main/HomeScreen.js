@@ -12,7 +12,7 @@ import React, {useCallback, useEffect, useLayoutEffect, useState} from 'react';
 // import Button from '../../components/ui/Button';
 import {useFonts} from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import {Auth, Analytics} from 'aws-amplify';
+// import {Auth, Analytics} from 'aws-amplify';
 import SongPreviewList from '../../components/HomeScreenComponents/SongPreview';
 import CategoryBar from '../../components/HomeScreenComponents/CategoryBar';
 import NewAlbum from '../../components/HomeScreenComponents/NewAlbum/NewAlbum';
@@ -20,12 +20,24 @@ import Playlist from '../../components/HomeScreenComponents/Playlist/Playlist';
 import Header from '../../components/HomeScreenComponents/Header/Header';
 import SearchIcon from '../../components/ui/SearchIcon';
 import MenuDots from '../../components/ui/MenuDots';
+import TrackPlayer from 'react-native-track-player';
 // import * as MediaLibrary from 'expo-media-library';
 // import {StatusBar} from 'expo-status-bar';
 // import {API_KEY} from '@env'
 
 const HomeScreen = () => {
   const [files, setFiles] = useState([]);
+
+  var song1 = {
+    url: require('../../../assets/songs/hb.m4a'),
+  };
+
+  async function play() {
+    const song = await TrackPlayer.add(song1);
+    console.log(song);
+    await TrackPlayer.play();
+  }
+  play();
   // Analytics.autoTrack();
   // console.log(API_KEY)
   // async function getFiles() {
@@ -67,27 +79,27 @@ const HomeScreen = () => {
   //   getPerms();
   // }, []);
 
-  // useEffect(() => {
-  //   async function prepare() {
-  //     await SplashScreen.preventAutoHideAsync();
-  //   }
-  //   prepare();
-  // }, []);
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+    prepare();
+  }, []);
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <>
-      {/* <StatusBar hidden={true} /> */}
-      <SafeAreaView style={styles.root}>
+      <StatusBar hidden={true} />
+      <SafeAreaView onLayout={onLayoutRootView} style={styles.root}>
         <ScrollView
           contentContainerStyle={styles.root}
           nestedScrollEnabled={true}
@@ -137,7 +149,7 @@ const HomeScreen = () => {
                   justifyContent: 'center',
                 }}>
                 {/* <ScrollView horizontal={true} style={{ width: "100%" }}> */}
-                {/* <Playlist data={files} /> */}
+                <Playlist data={files} />
                 {/* </ScrollView> */}
                 {/* <Text>test</Text> */}
               </View>

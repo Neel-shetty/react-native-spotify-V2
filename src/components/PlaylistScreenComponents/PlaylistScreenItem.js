@@ -131,7 +131,7 @@ const PlaylistScreenItem = ({playlist, id}) => {
       <View style={styles.titleContainer}>
         <TouchableOpacity onPress={titleButton}>
           <Text numberOfLines={2} style={styles.song}>
-            {removeExtension(playlist.filename)}
+            {(playlist.filename)}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity>

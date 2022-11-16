@@ -6,8 +6,9 @@
 //  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navigator from './src/navigation/Navigator';
+import TrackPlayer from 'react-native-track-player';
 // import {Amplify} from 'aws-amplify';
 // import awsconfig from './aws-exports';
 // Amplify.configure(awsconfig);
@@ -16,6 +17,14 @@ import Navigator from './src/navigation/Navigator';
  * LTI update could not be added via codemod */
 
 const App = () => {
+  async function setup() {
+    await TrackPlayer.setupPlayer();
+  }
+
+  useEffect(() => {
+    setup();
+  }, []);
+
   return (
     <>
       <Navigator />
