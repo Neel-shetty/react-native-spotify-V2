@@ -1,0 +1,16 @@
+{
+  "resourceName": "s3spotifyclonestorage382ece39",
+  "bucketName": "spotify-clone-storage-382ece39",
+  "policyUUID": "f6e7ac64",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

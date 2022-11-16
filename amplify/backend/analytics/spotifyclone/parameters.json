@@ -1,0 +1,21 @@
+{
+    "appName": "spotifyclone",
+    "roleName": "pinpointLambdaRole1c817911",
+    "cloudformationPolicyName": "cloudformationPolicy1c817911",
+    "cloudWatchPolicyName": "cloudWatchPolicy1c817911",
+    "pinpointPolicyName": "pinpointPolicy1c817911",
+    "authPolicyName": "pinpoint_amplify_1c817911",
+    "unauthPolicyName": "pinpoint_amplify_1c817911",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
