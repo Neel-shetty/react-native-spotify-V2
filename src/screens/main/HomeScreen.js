@@ -26,32 +26,32 @@ import MenuDots from '../../components/ui/MenuDots';
 
 const HomeScreen = () => {
   const [files, setFiles] = useState([]);
-  Analytics.autoTrack();
+  // Analytics.autoTrack();
   // console.log(API_KEY)
-  async function getFiles() {
-    let files = await MediaLibrary.getAssetsAsync({
-      mediaType: 'audio',
-      //album: 'music'
-    });
-    files = await MediaLibrary.getAssetsAsync({
-      mediaType: 'audio',
-      first: files.totalCount,
-    });
-    //const folder = await MediaLibrary.getAssetInfoAsync('33 DADDY ! DADDY ! DO !.m4a')
-    const tempFile = files.assets;
-    setFiles(tempFile);
-    //console.log(folder)
-    //console.log(files.assets)
-    //download();
-  }
+  // async function getFiles() {
+  //   let files = await MediaLibrary.getAssetsAsync({
+  //     mediaType: 'audio',
+  //     //album: 'music'
+  //   });
+  //   files = await MediaLibrary.getAssetsAsync({
+  //     mediaType: 'audio',
+  //     first: files.totalCount,
+  //   });
+  //   //const folder = await MediaLibrary.getAssetInfoAsync('33 DADDY ! DADDY ! DO !.m4a')
+  //   const tempFile = files.assets;
+  //   setFiles(tempFile);
+  //   //console.log(folder)
+  //   //console.log(files.assets)
+  //   //download();
+  // }
 
-  useLayoutEffect(() => {
-    getFiles();
-  }, []);
+  // useLayoutEffect(() => {
+  //   getFiles();
+  // }, []);
 
-  function logOut() {
-    Auth.signOut();
-  }
+  // function logOut() {
+  //   Auth.signOut();
+  // }
 
   const [fontsLoaded] = useFonts({
     'satoshi-bold': require('../../../assets/fonts/satoshi/Satoshi-Bold.otf'),
@@ -59,35 +59,35 @@ const HomeScreen = () => {
     'satoshi-medium': require('../../../assets/fonts/satoshi/Satoshi-Medium.otf'),
   });
 
-  useEffect(() => {
-    async function getPerms() {
-      const perms = await MediaLibrary.requestPermissionsAsync();
-      console.log(perms);
-    }
-    getPerms();
-  }, []);
+  // useEffect(() => {
+  //   async function getPerms() {
+  //     const perms = await MediaLibrary.requestPermissionsAsync();
+  //     console.log(perms);
+  //   }
+  //   getPerms();
+  // }, []);
 
-  useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-    }
-    prepare();
-  }, []);
+  // useEffect(() => {
+  //   async function prepare() {
+  //     await SplashScreen.preventAutoHideAsync();
+  //   }
+  //   prepare();
+  // }, []);
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   return (
     <>
-      <StatusBar hidden={true} />
-      <SafeAreaView onLayout={onLayoutRootView} style={styles.root}>
+      {/* <StatusBar hidden={true} /> */}
+      <SafeAreaView style={styles.root}>
         <ScrollView
           contentContainerStyle={styles.root}
           nestedScrollEnabled={true}
@@ -137,7 +137,7 @@ const HomeScreen = () => {
                   justifyContent: 'center',
                 }}>
                 {/* <ScrollView horizontal={true} style={{ width: "100%" }}> */}
-                <Playlist data={files} />
+                {/* <Playlist data={files} /> */}
                 {/* </ScrollView> */}
                 {/* <Text>test</Text> */}
               </View>
@@ -151,7 +151,7 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
-const height = Dimensions.get('window').height;
+// const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({

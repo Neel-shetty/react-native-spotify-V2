@@ -31,16 +31,16 @@ import SignInScreen from '../screens/login/SignInScreen';
 import ResetPassword from '../screens/login/ResetPassword';
 import HomeScreen from '../screens/main/HomeScreen';
 import ExploreScreen from '../screens/main/ExploreScreen';
-import PlaylistScreen from '../screens/main/PlaylistScreen';
-import ProfileScreen from '../screens/main/ProfileScreen';
+// import PlaylistScreen from '../screens/main/PlaylistScreen';
+// import ProfileScreen from '../screens/main/ProfileScreen';
 // import MusicPlayer from '../screens/main/MusicPlayer';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
-  const [user, setUser] = useState(undefined);
-  setUser(true);
+  // const [user, setUser] = useState(undefined);
+  // setUser(true);
   // useEffect(() => {
   //   checkUser();
   // }, []);
@@ -103,7 +103,7 @@ const Navigator = () => {
             headerShown: false,
           }}
         />
-        {/* <Tab.Screen
+        <Tab.Screen
           name="ExploreScreen"
           component={ExploreScreen}
           options={{
@@ -121,7 +121,7 @@ const Navigator = () => {
             tabBarShowLabel: false,
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="PlaylistScreen"
           component={PlaylistScreen}
           options={{
@@ -162,27 +162,27 @@ const Navigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainApp">
-        {user ? (
-          <>
-            <Stack.Screen
-              name="MainApp"
-              component={MainApp}
-              options={() => ({
-                tabBarStyle: {
-                  display: 'none',
-                },
-                //tabBarButton: () => null,
-                headerShown: false,
-              })}
-            />
-            <Stack.Screen
-              name="MusicPlayer"
-              // component={MusicPlayer}
-              options={{headerShown: false}}
-            />
-          </>
-        ) : (
-          <>
+        {/* {user ? ( */}
+        <>
+          <Stack.Screen
+            name="MainApp"
+            component={MainApp}
+            options={() => ({
+              tabBarStyle: {
+                display: 'none',
+              },
+              //tabBarButton: () => null,
+              headerShown: false,
+            })}
+          />
+          {/* <Stack.Screen
+            name="MusicPlayer"
+            // component={MusicPlayer}
+            options={{headerShown: false}}
+          /> */}
+        </>
+        {/* ) : ( */}
+        {/* <>
             <Stack.Screen
               name="GetStarted"
               component={GetStartedScreen}
@@ -260,8 +260,8 @@ const Navigator = () => {
                 headerShown: false,
               })}
             />
-          </>
-        )}
+          </> */}
+        {/* )} */}
       </Stack.Navigator>
     </NavigationContainer>
   );
