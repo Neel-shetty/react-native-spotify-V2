@@ -6,7 +6,7 @@
 //  * @flow strict-local
  */
 
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Navigator from './src/navigation/Navigator';
 import TrackPlayer from 'react-native-track-player';
 // import {Amplify} from 'aws-amplify';
