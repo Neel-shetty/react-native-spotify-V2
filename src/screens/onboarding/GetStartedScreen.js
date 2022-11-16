@@ -1,23 +1,15 @@
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  StatusBar,
-  ImageBackground,
-} from 'react-native';
+import {StyleSheet, Text, View, StatusBar, ImageBackground} from 'react-native';
 import React from 'react';
 import Logo from '../../components/ui/Logo';
-import Logos from '../../../assets/svg/Logo.svg';
+// import Logos from '../../../assets/svg/Logo.svg';
 import {useFonts} from 'expo-font';
 // import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect} from 'react';
 import Button from '../../components/ui/Button';
 import {useNavigation} from '@react-navigation/native';
 // import {StatusBar} from 'expo-status-bar';
-import {Storage} from '@aws-amplify/storage';
+// import {Storage} from '@aws-amplify/storage';
 
 const GetStartedScreen = () => {
   /* async function awsstore() {
@@ -65,7 +57,7 @@ const GetStartedScreen = () => {
             <Logo width="196" height="59" scale="1" />
           </View>
           <View style={styles.semiroot}>
-            <View style={styles.dummy}></View>
+            <View style={styles.dummy} />
             <View style={styles.titleContainer}>
               <Text style={styles.title}>Enjoy Listening To Music?</Text>
             </View>
@@ -89,8 +81,8 @@ const GetStartedScreen = () => {
 
 export default GetStartedScreen;
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
+// const height = Dimensions.get('window').height;
+// const width = Dimensions.get('window').width;
 //console.log(height,width)
 
 const styles = StyleSheet.create({

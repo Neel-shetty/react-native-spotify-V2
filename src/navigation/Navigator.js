@@ -24,6 +24,11 @@ import HeartOutline from '../components/ui/HeartOutline';
 import Profile from '../components/ui/Profile';
 import ProfileOutline from '../components/ui/ProfileOutline';
 import ChooseMode from '../screens/onboarding/ChooseMode';
+import RegisterOrSignIn from '../screens/login/RegisterOrSignIn';
+import RegisterScreen from '../screens/login/RegisterScreen';
+import ConfirmScreen from '../screens/login/ConfirmScreen';
+import SignInScreen from '../screens/login/SignInScreen';
+import ResetPassword from '../screens/login/ResetPassword';
 // import MusicPlayer from '../screens/main/MusicPlayer';
 
 const Stack = createNativeStackNavigator();
@@ -173,32 +178,32 @@ const Navigator = () => {
             />
           </>
         ) : ( */}
-        {/* <> */}
-        <Stack.Screen
-          name="GetStarted"
-          component={GetStartedScreen}
-          options={() => ({
-            tabBarStyle: {
-              display: 'none',
-            },
-            tabBarButton: () => null,
-            headerShown: false,
-          })}
-        />
-        <Stack.Screen
-          name="ChooseMode"
-          component={ChooseMode}
-          options={() => ({
-            tabBarStyle: {
-              display: 'none',
-            },
-            tabBarButton: () => null,
-            headerShown: false,
-          })}
-        />
-        {/* <Stack.Screen
+        <>
+          <Stack.Screen
+            name="GetStarted"
+            component={GetStartedScreen}
+            options={() => ({
+              tabBarStyle: {
+                display: 'none',
+              },
+              tabBarButton: () => null,
+              headerShown: false,
+            })}
+          />
+          <Stack.Screen
+            name="ChooseMode"
+            component={ChooseMode}
+            options={() => ({
+              tabBarStyle: {
+                display: 'none',
+              },
+              tabBarButton: () => null,
+              headerShown: false,
+            })}
+          />
+          <Stack.Screen
             name="RegisterOrSignIn"
-            // component={RegisterOrSignIn}
+            component={RegisterOrSignIn}
             options={() => ({
               tabBarStyle: {
                 display: 'none',
@@ -209,7 +214,7 @@ const Navigator = () => {
           />
           <Stack.Screen
             name="RegisterScreen"
-            // component={RegisterScreen}
+            component={RegisterScreen}
             options={() => ({
               tabBarStyle: {
                 display: 'none',
@@ -220,7 +225,7 @@ const Navigator = () => {
           />
           <Stack.Screen
             name="ConfirmScreen"
-            // component={ConfirmScreen}
+            component={ConfirmScreen}
             options={() => ({
               tabBarStyle: {
                 display: 'none',
@@ -231,7 +236,7 @@ const Navigator = () => {
           />
           <Stack.Screen
             name="SignInScreen"
-            // component={SignInScreen}
+            component={SignInScreen}
             options={() => ({
               tabBarStyle: {
                 display: 'none',
@@ -242,7 +247,7 @@ const Navigator = () => {
           />
           <Stack.Screen
             name="ResetPassword"
-            // component={ResetPassword}
+            component={ResetPassword}
             options={() => ({
               tabBarStyle: {
                 display: 'none',
@@ -251,7 +256,7 @@ const Navigator = () => {
               headerShown: false,
             })}
           />
-        </> */}
+        </>
         {/* )} */}
       </Stack.Navigator>
     </NavigationContainer>
