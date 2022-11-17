@@ -36,7 +36,6 @@ import SignInScreen from '../screens/login/SignInScreen';
 import ResetPassword from '../screens/login/ResetPassword';
 import HomeScreen from '../screens/main/HomeScreen';
 import ExploreScreen from '../screens/main/ExploreScreen';
-import RNFS from 'react-native-fs';
 // import PlaylistScreen from '../screens/main/PlaylistScreen';
 // import ProfileScreen from '../screens/main/ProfileScreen';
 // import MusicPlayer from '../screens/main/MusicPlayer';
@@ -45,17 +44,6 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
-  async function getPermission() {
-    try {
-      PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  console.log(RNFS.ExternalStorageDirectoryPath);
 
   // const [user, setUser] = useState(undefined);
   // setUser(true);

@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
   StatusBar,
+  PermissionsAndroid,
 } from 'react-native';
 import React, {useCallback, useEffect, useLayoutEffect, useState} from 'react';
 // import Button from '../../components/ui/Button';
@@ -21,21 +22,39 @@ import Header from '../../components/HomeScreenComponents/Header/Header';
 import SearchIcon from '../../components/ui/SearchIcon';
 import MenuDots from '../../components/ui/MenuDots';
 import TrackPlayer from 'react-native-track-player';
+import RNFS from 'react-native-fs';
 // import * as MediaLibrary from 'expo-media-library';
 // import {StatusBar} from 'expo-status-bar';
 // import {API_KEY} from '@env'
 
 const HomeScreen = () => {
+  async function getPermission() {
+    try {
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  getPermission();
+
+  async function getFiles() {
+    console.log(':joy:');
+  }
+  getFiles();
   const [files, setFiles] = useState([]);
 
-  var song1 = {
+  const song1 = {
     url: require('../../../assets/songs/hb.m4a'),
   };
 
   async function play() {
     const song = await TrackPlayer.add(song1);
     console.log(song);
-    await TrackPlayer.play();
+    await TrackPlayer.pause();
   }
   play();
   // Analytics.autoTrack();
