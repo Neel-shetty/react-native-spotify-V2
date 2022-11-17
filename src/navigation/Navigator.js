@@ -36,6 +36,8 @@ import SignInScreen from '../screens/login/SignInScreen';
 import ResetPassword from '../screens/login/ResetPassword';
 import HomeScreen from '../screens/main/HomeScreen';
 import ExploreScreen from '../screens/main/ExploreScreen';
+import PlaylistScreenItem from '../components/PlaylistScreenComponents/PlaylistScreenItem';
+import ProfileScreen from '../screens/main/ProfileScreen';
 // import PlaylistScreen from '../screens/main/PlaylistScreen';
 // import ProfileScreen from '../screens/main/ProfileScreen';
 // import MusicPlayer from '../screens/main/MusicPlayer';
@@ -84,7 +86,7 @@ const Navigator = () => {
   function MainApp() {
     return (
       <Tab.Navigator
-        initialRouteName="ExploreScreen"
+        initialRouteName="HomeScreen"
         screenOptions={{
           tabBarShowLabel: false,
           tabBarStyle: {height: 73},
@@ -127,9 +129,9 @@ const Navigator = () => {
             tabBarShowLabel: false,
           }}
         />
-        {/* <Tab.Screen
+        <Tab.Screen
           name="PlaylistScreen"
-          component={PlaylistScreen}
+          component={PlaylistScreenItem}
           options={{
             tabBarIcon: ({focused}) => (
               <View>
@@ -160,7 +162,7 @@ const Navigator = () => {
             ),
             headerShown: false,
           }}
-        /> */}
+        />
       </Tab.Navigator>
     );
   }

@@ -56,7 +56,7 @@ const HomeScreen = () => {
     console.log(song);
     await TrackPlayer.pause();
   }
-  play();
+  // play();
   // Analytics.autoTrack();
   // console.log(API_KEY)
   // async function getFiles() {

@@ -129,9 +129,9 @@ const PlaylistScreenItem = ({playlist, id}) => {
       </View>
 
       <View style={styles.titleContainer}>
-        <TouchableOpacity onPress={titleButton}>
+        <TouchableOpacity>
           <Text numberOfLines={2} style={styles.song}>
-            {(playlist.filename)}
+            {/* {playlist.filename} */}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -140,10 +140,10 @@ const PlaylistScreenItem = ({playlist, id}) => {
       </View>
 
       <View style={styles.lengthContainer}>
-        <Text style={styles.length}>{convertTime(playlist.duration)}</Text>
+        {/* <Text style={styles.length}>{convertTime(playlist.duration)}</Text> */}
       </View>
       <View style={styles.likeContainer}>
-        <TouchableOpacity onPress={playButton}>
+        <TouchableOpacity>
           <Svg
             width={21}
             height={21}
