@@ -35,7 +35,7 @@ const HomeScreen = () => {
   async function play() {
     const song = await TrackPlayer.add(song1);
     console.log(song);
-    await TrackPlayer.pause();
+    await TrackPlayer.play();
   }
   play();
   // Analytics.autoTrack();
