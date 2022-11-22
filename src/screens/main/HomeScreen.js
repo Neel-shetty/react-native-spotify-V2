@@ -195,7 +195,8 @@ const HomeScreen = () => {
 
       return data;
     }
-    const data = await scanDir('/storage/emulated/0/Music');
+    const bruh = await scanDir('/storage/emulated/0/Music');
+    console.log(bruh);
   }
 
   // console.log(await readFolder('/storage/emulated/0/Music'));
