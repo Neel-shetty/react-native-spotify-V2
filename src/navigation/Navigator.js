@@ -46,7 +46,6 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
-
   // const [user, setUser] = useState(undefined);
   // setUser(true);
   // useEffect(() => {
