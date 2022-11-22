@@ -26,71 +26,72 @@ import RNFS, {readDir, readDirAssets} from 'react-native-fs';
 // import * as MediaLibrary from 'expo-media-library';
 // import {StatusBar} from 'expo-status-bar';
 // import {API_KEY} from '@env'
-RNFS.readDir(RNFS.ExternalStorageDirectoryPath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
-  .then(result => {
-    console.log('GOT RESULT', result[1].path);
+// RNFS.readDir(RNFS.ExternalStorageDirectoryPath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
+//   .then(result => {
+//     console.log('GOT RESULT', result[1].path);
 
-    // stat the first file
-    return Promise.all([RNFS.stat(result[0].path), result[0].path]);
-  })
-  .then(statResult => {
-    if (statResult[0].isFile()) {
-      // if we have a file, read it
-      return RNFS.readFile(statResult[1], 'utf8');
-    }
+//     // stat the first file
+//     return Promise.all([RNFS.stat(result[0].path), result[0].path]);
+//   })
+//   .then(statResult => {
+//     if (statResult[0].isFile()) {
+//       // if we have a file, read it
+//       return RNFS.readFile(statResult[1], 'utf8');
+//     }
 
-    return 'no file';
-  })
-  .then(contents => {
-    // log the file contents
-    console.log(contents);
-  })
-  .catch(err => {
-    console.log(err.message, err.code);
-  });
+//     return 'no file';
+//   })
+//   .then(contents => {
+//     // log the file contents
+//     console.log(contents);
+//   })
+//   .catch(err => {
+//     console.log(err.message, err.code);
+//   });
 
-var path = RNFS.DocumentDirectoryPath + '/test.txt';
-// write the file
-RNFS.writeFile(path, 'Lorem ipsum dolor sit amet', 'utf8')
-  .then(success => {
-    console.log('FILE WRITTEN!');
-  })
-  .catch(err => {
-    console.log(err.message);
-  });
+// var path = RNFS.DocumentDirectoryPath + '/test.txt';
+// // write the file
+// RNFS.writeFile(path, 'Lorem ipsum dolor sit amet', 'utf8')
+//   .then(success => {
+//     console.log('FILE WRITTEN!');
+//   })
+//   .catch(err => {
+//     console.log(err.message);
+//   });
 
-async function readFolder() {
-  const items = await readDir('/storage/emulated/0/Music');
-  console.log(items);
-}
-readFolder();
+// async function readFolder() {
+//   const items = await readDir('/storage/emulated/0/Music');
+//   console.log(items);
+// }
+// readFolder();
 
-const requestStoragePermission = async () => {
-  try {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      {
-        title: 'Permissons required for Spotify ',
-        message:
-          'Spotify needs to access your storage' +
-          'to read the audio files on this device.',
-        buttonNeutral: 'Ask Me Later',
-        buttonNegative: 'Cancel',
-        buttonPositive: 'OK',
-      },
-    );
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      console.log('You can use the storage');
-    } else {
-      console.log('Camera permission storage');
-    }
-  } catch (err) {
-    console.warn(err);
-  }
-};
+// const requestStoragePermission = async () => {
+//   try {
+//     const granted = await PermissionsAndroid.request(
+//       PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+//       {
+//         title: 'Permissons required for Spotify ',
+//         message:
+//           'Spotify needs to access your storage' +
+//           'to read the audio files on this device.',
+//         buttonNeutral: 'Ask Me Later',
+//         buttonNegative: 'Cancel',
+//         buttonPositive: 'OK',
+//       },
+//     );
+//     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+//       console.log('You can use the storage');
+//     } else {
+//       console.log('Camera permission storage');
+//     }
+//   } catch (err) {
+//     console.warn(err);
+//   }
+// };
 // requestStoragePermission();
 
 const HomeScreen = () => {
+  const [shit, setShit] = useState();
   async function getPermission() {
     try {
       PermissionsAndroid.request(
@@ -177,6 +178,30 @@ const HomeScreen = () => {
   if (!fontsLoaded) {
     return null;
   }
+
+  async function temp() {
+    async function scanDir(pathOfDirToScan, data = {directory: [], files: []}) {
+      const readedFilesAndDir = await RNFS.readDir(pathOfDirToScan);
+
+      readedFilesAndDir.map(async eachItem => {
+        if (eachItem.isDirectory()) {
+          const directoryPath = pathOfDirToScan + '/' + eachItem.name;
+          data.directory.push(directoryPath);
+          data = await scanDir(directoryPath, data);
+        } else {
+          data.files.push(pathOfDirToScan + '/' + eachItem.name);
+        }
+      });
+
+      return data;
+    }
+    const data = await scanDir('/storage/emulated/0/Music');
+  }
+
+  // console.log(await readFolder('/storage/emulated/0/Music'));
+  // console.log('folderitems -', folderItems);
+
+  temp();
 
   return (
     <>
