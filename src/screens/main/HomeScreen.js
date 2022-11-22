@@ -64,6 +64,7 @@ async function readFolder() {
   console.log(items);
 }
 readFolder();
+
 const requestStoragePermission = async () => {
   try {
     const granted = await PermissionsAndroid.request(
