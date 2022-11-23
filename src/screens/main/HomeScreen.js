@@ -22,7 +22,8 @@ import Header from '../../components/HomeScreenComponents/Header/Header';
 import SearchIcon from '../../components/ui/SearchIcon';
 import MenuDots from '../../components/ui/MenuDots';
 import TrackPlayer from 'react-native-track-player';
-import RNFS, {readDir, readDirAssets} from 'react-native-fs';
+import RNFS from 'react-native-fs';
+import * as MediaLibrary from 'expo-media-library';
 // import * as MediaLibrary from 'expo-media-library';
 // import {StatusBar} from 'expo-status-bar';
 // import {API_KEY} from '@env'
@@ -92,6 +93,13 @@ import RNFS, {readDir, readDirAssets} from 'react-native-fs';
 
 const HomeScreen = () => {
   const [shit, setShit] = useState();
+  let permRes = [];
+
+  async function getperm() {
+    permRes = await MediaLibrary.requestPermissionsAsync();
+    console.log(permRes);
+  }
+  // getperm();
   async function getPermission() {
     try {
       PermissionsAndroid.request(
@@ -123,26 +131,26 @@ const HomeScreen = () => {
   // play();
   // Analytics.autoTrack();
   // console.log(API_KEY)
-  // async function getFiles() {
-  //   let files = await MediaLibrary.getAssetsAsync({
-  //     mediaType: 'audio',
-  //     //album: 'music'
-  //   });
-  //   files = await MediaLibrary.getAssetsAsync({
-  //     mediaType: 'audio',
-  //     first: files.totalCount,
-  //   });
-  //   //const folder = await MediaLibrary.getAssetInfoAsync('33 DADDY ! DADDY ! DO !.m4a')
-  //   const tempFile = files.assets;
-  //   setFiles(tempFile);
-  //   //console.log(folder)
-  //   //console.log(files.assets)
-  //   //download();
-  // }
+  async function getFiles() {
+    let files = await MediaLibrary.getAssetsAsync({
+      mediaType: 'audio',
+      //album: 'music'
+    });
+    files = await MediaLibrary.getAssetsAsync({
+      mediaType: 'audio',
+      first: files.totalCount,
+    });
+    //const folder = await MediaLibrary.getAssetInfoAsync('33 DADDY ! DADDY ! DO !.m4a')
+    const tempFile = files.assets;
+    setFiles(tempFile);
+    //console.log(folder)
+    //console.log(files.assets)
+    //download();
+  }
 
-  // useLayoutEffect(() => {
-  //   getFiles();
-  // }, []);
+  useLayoutEffect(() => {
+    getFiles();
+  }, []);
 
   // function logOut() {
   //   Auth.signOut();
@@ -202,7 +210,7 @@ const HomeScreen = () => {
   // console.log(await readFolder('/storage/emulated/0/Music'));
   // console.log('folderitems -', folderItems);
 
-  temp();
+  // temp();
 
   return (
     <>
