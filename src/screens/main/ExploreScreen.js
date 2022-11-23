@@ -38,12 +38,12 @@ const ExploreScreen = () => {
       onSuccess: res => {
         const result = res;
         setSongData(result);
-        console.log(result);
+        console.log(result.data.results[0].picture.large);
         console.log('success');
       },
       onError: err => {
         const error = err;
-        console.log(error);
+        console.log(err);
         console.log('error');
       },
     },
