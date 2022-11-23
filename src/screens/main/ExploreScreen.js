@@ -16,9 +16,9 @@ import PlaylistItem from '../../components/HomeScreenComponents/Playlist/Playlis
 import PlaylistData from '../../../assets/dummydata/PlaylistData';
 import PlaylistScreenItem from '../../components/PlaylistScreenComponents/PlaylistScreenItem';
 // import * as SQLite from 'expo-sqlite';
-// import apiClient from '../../service/http';
+import apiClient from '../../service/http';
 import {useQuery} from 'react-query';
-
+import axios from 'axios';
 // const db = SQLite.openDatabase('songDetails.db');
 
 const ExploreScreen = () => {
@@ -26,28 +26,28 @@ const ExploreScreen = () => {
   const [songData, setSongData] = useState(null);
   //console.log(songData)
 
-  // const {isLoading, isSuccess, isError, data, error, refetch} = useQuery(
-  //   'search',
-  //   async () => {
-  //     console.log('test');
-  //     return await apiClient.get('search?q=Bad%20Guy');
-  //   },
-  //   {
-  //     enabled: true,
-  //     retry: 2,
-  //     onSuccess: res => {
-  //       const result = res;
-  //       setSongData(result);
-  //       console.log(result);
-  //       console.log('success');
-  //     },
-  //     onError: err => {
-  //       const error = err;
-  //       console.log(error);
-  //       console.log('error');
-  //     },
-  //   },
-  // );
+  const {isLoading, isSuccess, isError, data, error, refetch} = useQuery(
+    'search',
+    async () => {
+      console.log('test');
+      return await apiClient.get('https://randomuser.me/api/');
+    },
+    {
+      enabled: true,
+      retry: 2,
+      onSuccess: res => {
+        const result = res;
+        setSongData(result);
+        console.log(result);
+        console.log('success');
+      },
+      onError: err => {
+        const error = err;
+        console.log(error);
+        console.log('error');
+      },
+    },
+  );
 
   // songInfo();
   //console.log(files[0]);

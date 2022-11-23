@@ -12,6 +12,8 @@ import TrackPlayer from 'react-native-track-player';
 // import {Amplify} from 'aws-amplify';
 // import awsconfig from './aws-exports';
 // Amplify.configure(awsconfig);
+import {QueryClient, QueryClientProvider} from 'react-query';
+const queryClient = new QueryClient();
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -27,7 +29,9 @@ const App = () => {
 
   return (
     <>
-      <Navigator />
+      <QueryClientProvider client={queryClient}>
+        <Navigator />
+      </QueryClientProvider>
     </>
   );
 };
