@@ -43,6 +43,7 @@ const HomeScreen = () => {
 
   const [files, setFiles] = useState([]);
 
+  // console.log(files[4].uri);
   const song1 = {
     url: require('../../../assets/songs/hb.m4a'),
   };

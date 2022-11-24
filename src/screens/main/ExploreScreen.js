@@ -42,7 +42,7 @@ const ExploreScreen = () => {
         console.log('success');
       },
       onError: err => {
-        const error = err;
+        // const error = err;
         console.log(err);
         console.log('error');
       },
