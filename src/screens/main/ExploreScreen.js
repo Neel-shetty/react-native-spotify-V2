@@ -26,6 +26,29 @@ const ExploreScreen = () => {
   const [songData, setSongData] = useState(null);
   //console.log(songData)
 
+  const options = {
+    method: 'GET',
+    url: 'https://geniurl.p.rapidapi.com/search/top',
+    params: {
+      q: 'unravel',
+    },
+    headers: {
+      'X-RapidAPI-Key': 'c310cfc9femsh498a42dcae913fep1a0fc6jsn6b86c2b5c76d',
+      'X-RapidAPI-Host': 'geniurl.p.rapidapi.com',
+    },
+  };
+
+  function getDetails() {
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
+
   const {isLoading, isSuccess, isError, data, error, refetch} = useQuery(
     'search',
     async () => {
@@ -217,6 +240,7 @@ const ExploreScreen = () => {
       <View style={{flex: 1, width: width}}>
         <DefaultHeader />
       </View>
+      <Button onPress={getDetails}>get data</Button>
       <View style={{flex: 8, width: width}}>
         <FlashList
           data={files}
