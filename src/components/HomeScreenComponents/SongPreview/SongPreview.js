@@ -20,7 +20,7 @@ const SongPreview = ({preview}) => {
   const [coverUri, setCoverUri] = useState();
   const navigation = useNavigation();
 
-  console.log(coverUri);
+  // console.log(coverUri);
 
   function onPress() {
     navigation.navigate('MusicPlayer', {
@@ -59,7 +59,7 @@ const SongPreview = ({preview}) => {
       });
   }
 
-  useEffect(getDetails);
+  // useEffect(getDetails);
 
   const convertTime = minutes => {
     if (minutes) {
@@ -135,7 +135,7 @@ const SongPreview = ({preview}) => {
     filename = filename.substring(filename.indexOf(' ') + 1);
     return filename.substring(0, filename.lastIndexOf('.')) || filename;
   }
-  console.log(removeExtension(preview.filename));
+  // console.log(removeExtension(preview.filename));
 
   //console.log(preview.filename)
   return (

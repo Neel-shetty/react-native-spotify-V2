@@ -26,6 +26,9 @@ import RNFS from 'react-native-fs';
 import * as MediaLibrary from 'expo-media-library';
 // import {StatusBar} from 'expo-status-bar';
 // import {API_KEY} from '@env'
+import apiClient from '../../service/http';
+import {useQuery} from 'react-query';
+import axios from 'axios';
 
 const HomeScreen = () => {
   async function getPermission() {
@@ -68,9 +71,42 @@ const HomeScreen = () => {
     //const folder = await MediaLibrary.getAssetInfoAsync('33 DADDY ! DADDY ! DO !.m4a')
     const tempFile = files.assets;
     setFiles(tempFile);
+    console.log('temp file ------- ', tempFile);
     //console.log(folder)
     //console.log(files.assets)
-    //download();
+    for (let i = 0; i < files.assets.length; i++) {
+      // console.log(files.assets[i].filename);
+      let tempFileName = files.assets[i].filename;
+      const options = {
+        method: 'GET',
+        url: 'https://geniurl.p.rapidapi.com/search/top',
+        params: {
+          q: removeExtenstion(tempFileName),
+        },
+        headers: {
+          'X-RapidAPI-Key':
+            'c310cfc9femsh498a42dcae913fep1a0fc6jsn6b86c2b5c76d',
+          'X-RapidAPI-Host': 'geniurl.p.rapidapi.com',
+        },
+      };
+      function getDetails() {
+        axios
+          .request(options)
+          .then(function (response) {
+            console.log(response.data);
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+      } //download();
+      getDetails();
+
+      function removeExtension(filename) {
+        // filename = filename.replace(/\d+/g, '');
+        filename = filename.substring(filename.indexOf(' ') + 1);
+        return filename.substring(0, filename.lastIndexOf('.')) || filename;
+      }
+    }
   }
 
   useEffect(() => {
