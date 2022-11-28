@@ -4134,7 +4134,7 @@
 
 "@shopify/flash-list@^1.4.0":
   version "1.4.0"
-  resolved "https://registry.npmjs.org/@shopify/flash-list/-/flash-list-1.4.0.tgz"
+  resolved "https://registry.yarnpkg.com/@shopify/flash-list/-/flash-list-1.4.0.tgz#cf299486ec9a7c97b7a8b1e8b6bf144a78141ed6"
   integrity sha512-PvPOyk353LuETFnNA038+QaJsAFlCQ2TYC7DHP3YnYqTX72g2BM6qLoLsPaptXKuoXX+dinOo0MbEm7HDjTy1g==
   dependencies:
     recyclerlistview "4.2.0"

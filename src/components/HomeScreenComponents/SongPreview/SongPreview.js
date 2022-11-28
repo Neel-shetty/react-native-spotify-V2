@@ -10,11 +10,17 @@ import React, {useEffect, useState} from 'react';
 import Svg, {Path} from 'react-native-svg';
 import {useNavigation} from '@react-navigation/native';
 // import * as MediaLibrary from 'expo-media-library';
+import apiClient from '../../../service/Service';
+import {useQuery} from 'react-query';
+import axios from 'axios';
 
 const SongPreview = ({preview}) => {
   const [cover, setCover] = useState();
   const [album, setAlbum] = useState();
+  const [coverUri, setCoverUri] = useState();
   const navigation = useNavigation();
+
+  console.log(coverUri);
 
   function onPress() {
     navigation.navigate('MusicPlayer', {
@@ -26,6 +32,34 @@ const SongPreview = ({preview}) => {
       Album: album,
     });
   }
+
+  const options = {
+    method: 'GET',
+    url: 'https://geniurl.p.rapidapi.com/search/top',
+    params: {
+      q: `${removeExtension(preview.filename)}`,
+    },
+    headers: {
+      'X-RapidAPI-Key': 'c310cfc9femsh498a42dcae913fep1a0fc6jsn6b86c2b5c76d',
+      'X-RapidAPI-Host': 'geniurl.p.rapidapi.com',
+    },
+  };
+
+  function getDetails() {
+    axios
+      .request(options)
+      .then(function (response) {
+        // console.log(response.data.resources.thumbnail);
+        if (response.status === 200) {
+          setCoverUri(response.data.resources.thumbnail);
+        }
+      })
+      .catch(function (error) {
+        // console.error(error);
+      });
+  }
+
+  useEffect(getDetails);
 
   const convertTime = minutes => {
     if (minutes) {
@@ -101,6 +135,7 @@ const SongPreview = ({preview}) => {
     filename = filename.substring(filename.indexOf(' ') + 1);
     return filename.substring(0, filename.lastIndexOf('.')) || filename;
   }
+  console.log(removeExtension(preview.filename));
 
   //console.log(preview.filename)
   return (
@@ -111,7 +146,7 @@ const SongPreview = ({preview}) => {
             <TouchableOpacity onPress={onPress}>
               <ImageBackground
                 style={styles.image}
-                source={{uri: cover}}
+                source={{uri: coverUri}}
                 imageStyle={styles.image}>
                 <TouchableOpacity>
                   <View style={styles.circle}>
